@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react"; // icon use (lucide-react)
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,13 +37,13 @@ export default function Navbar() {
         {/* Right: Buttons */}
         <div className="hidden md:flex space-x-4">
           <Link
-            href="/signin"
+            href="/auth/signin"
             className="px-4 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition"
           >
             Sign In
           </Link>
           <Link
-            href="/signup"
+            href="/auth/signup"
             className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
           >
             Sign Up
@@ -80,13 +80,13 @@ export default function Navbar() {
             </Link>
             <hr />
             <Link
-              href="/signin"
+              href="/app/auth/signin"
               className="px-4 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition"
             >
               Sign In
             </Link>
             <Link
-              href="/signup"
+              href="/auth/signup"
               className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
             >
               Sign Up
