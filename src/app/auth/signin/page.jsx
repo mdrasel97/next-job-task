@@ -1,17 +1,31 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
 
 export default function SignInPage() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("SignIn Data:", data);
-    // TODO: Add API call for authentication
+  const onSubmit = async (data) => {
+    const res = await signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    });
+
+    if (!res.error) {
+      console.log("Login successful!");
+      router.push("/");
+    } else {
+      console.log("Invalid credentials");
+    }
   };
 
   return (

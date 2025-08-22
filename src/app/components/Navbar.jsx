@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
 
   return (
     <nav className="bg-white shadow-md">
@@ -35,20 +37,29 @@ export default function Navbar() {
         </div>
 
         {/* Right: Buttons */}
-        <div className="hidden md:flex space-x-4">
-          <Link
-            href="/auth/signin"
-            className="px-4 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition"
-          >
-            Sign In
-          </Link>
-          <Link
-            href="/auth/signup"
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-          >
-            Sign Up
-          </Link>
-        </div>
+        {session ? (
+          <>
+            <span>{session.user.name}</span>
+            <button onClick={() => signOut()} className="ml-4">
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <div className="hidden md:flex space-x-4">
+            <Link
+              href="/auth/signin"
+              className="px-4 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition"
+            >
+              Sign In
+            </Link>
+            <Link
+              href="/auth/signup"
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            >
+              Sign Up
+            </Link>
+          </div>
+        )}
 
         {/* Mobile Menu Button */}
         <button
