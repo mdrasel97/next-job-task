@@ -10,14 +10,12 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-black text-white">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary-glow to-white bg-clip-text text-transparent">
-              ProductHub
-            </h3>
+            <h3 className="text-2xl font-bold mb-4 text-primary">ProductHub</h3>
             <p className="text-gray-300 mb-6 max-w-md">
               Discover premium tech products designed to elevate your lifestyle.
               We curate the best products for modern professionals and tech

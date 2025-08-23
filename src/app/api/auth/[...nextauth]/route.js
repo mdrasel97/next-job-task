@@ -31,15 +31,67 @@ const handler = NextAuth({
         };
       },
     }),
+
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+
   session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
-  pages: { signIn: "/auth/signIn" },
+  pages: { signIn: "/auth/signIn" }, // login page
+
+  callbacks: {
+    // Google user save in MongoDB
+    async signIn({ user, account }) {
+      if (account.provider === "google") {
+        try {
+          const client = await clientPromise;
+          const db = client.db(process.env.MONGODB_DB);
+
+          const existingUser = await db
+            .collection("users")
+            .findOne({ email: user.email });
+
+          if (!existingUser) {
+            await db.collection("users").insertOne({
+              name: user.name,
+              email: user.email,
+              imageURL: user.image,
+              provider: "google",
+              createdAt: new Date(),
+            });
+          }
+        } catch (error) {
+          console.error("Error saving Google user:", error);
+          return false;
+        }
+      }
+      return true;
+    },
+
+    // attach user id to session
+    async session({ session, token }) {
+      if (token.sub) {
+        session.user.id = token.sub;
+      }
+      return session;
+    },
+
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id || token.sub;
+      }
+      return token;
+    },
+
+    // ✅ redirect after login
+    async redirect({ url, baseUrl }) {
+      // Google login বা credentials login এর পর product page এ redirect
+      return "/products";
+    },
+  },
 });
 
-// App Router এ HTTP methods export
 export { handler as GET, handler as POST, handler as PUT, handler as DELETE };

@@ -34,7 +34,7 @@ export default function SignInPage() {
 
     if (!res.error) {
       console.log("Login successful!");
-      router.push("/");
+      router.push("/products");
     } else {
       console.log("Invalid credentials");
       alert("Invalid credentials");
@@ -42,8 +42,8 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="w-full max-w-md p-8 border border-white rounded-lg shadow-lg">
         <h1 className="text-2xl font-bold mb-6 text-center">Sign In</h1>
 
         {/* Credentials Form */}
@@ -53,10 +53,9 @@ export default function SignInPage() {
             <input
               {...register("email", {
                 required: "Email is required",
-                pattern: { value: /\S+@\S+\.\S+/, message: "Invalid email" },
               })}
               type="email"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-3 py-2 border dark:border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">
@@ -73,7 +72,7 @@ export default function SignInPage() {
                 minLength: { value: 6, message: "Minimum 6 characters" },
               })}
               type="password"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-3 py-2 border dark:border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">
@@ -84,7 +83,7 @@ export default function SignInPage() {
 
           <button
             type="submit"
-            className="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
+            className="w-full py-2 bg-primary text-white font-semibold rounded-lg hover:bg-green-700 transition"
           >
             Sign In
           </button>
@@ -105,7 +104,7 @@ export default function SignInPage() {
               <div key={provider.name}>
                 <button
                   onClick={() => signIn(provider.id)}
-                  className="w-full py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
+                  className="w-full py-2 border border-primary text-primary font-semibold rounded-lg transition"
                 >
                   Sign in with {provider.name}
                 </button>
@@ -114,7 +113,7 @@ export default function SignInPage() {
 
         <p className="text-sm text-center mt-4">
           Don't have an account?{" "}
-          <a href="/auth/signup" className="text-blue-500 hover:underline">
+          <a href="/auth/signup" className="text-primary hover:underline">
             Sign Up
           </a>
         </p>

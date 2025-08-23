@@ -6,7 +6,7 @@ export async function GET(req, { params }) {
     const client = await clientPromise;
     const db = client.db(process.env.MONGODB_DB);
 
-    // params.id ঠিকভাবে ব্যবহার
+    // params.id
     const { id } = params;
 
     const product = await db

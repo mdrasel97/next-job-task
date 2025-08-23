@@ -13,18 +13,25 @@ import Link from "next/link";
 
 export default function ProductCard({ product }) {
   return (
-    <Card className="group overflow-hidden border-0 shadow-card hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-1 bg-gradient-card">
+    <Card className="group overflow-hidden shadow-card hover:shadow-elegant transition-all duration-300 gap-3 transform hover:-translate-y-1 bg-gradient-card h[150px] border border-green-500 py-0">
       <CardHeader className="p-0">
         <div className="relative overflow-hidden">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground">
             {product.category}
           </Badge>
-          {!product.inStock && (
+          {product.inStock ? (
+            <Badge
+              variant="secondary"
+              className="absolute bg-green-100  text-green-800 top-4 right-4"
+            >
+              In Stock
+            </Badge>
+          ) : (
             <Badge variant="destructive" className="absolute top-4 right-4">
               Out of Stock
             </Badge>
@@ -32,7 +39,7 @@ export default function ProductCard({ product }) {
         </div>
       </CardHeader>
 
-      <CardContent className="p-6">
+      <CardContent className="px-6">
         <div className="flex items-center gap-1 mb-2">
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
@@ -53,13 +60,13 @@ export default function ProductCard({ product }) {
           {product.name}
         </h3>
 
-        <p className="text-muted-foreground mb-4">
+        <p className="text-muted-foreground mb-4 text-sm">
           {product.description.split(" ").slice(0, 10).join(" ")}
           {product.description.split(" ").length > 10 ? "..." : ""}
         </p>
 
         <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-primary">
+          <span className="text-2xl font-bold text-primary">
             ${product.price.toLocaleString()}
           </span>
           <Badge variant="secondary" className="text-xs">
@@ -68,7 +75,7 @@ export default function ProductCard({ product }) {
         </div>
       </CardContent>
 
-      <CardFooter className="p-6 pt-0 flex gap-2">
+      <CardFooter className="p-4 pt-0 flex gap-2">
         <Button asChild variant="outline" className="flex-1">
           <Link href={`/products/${product._id}`}>View Details</Link>
         </Button>

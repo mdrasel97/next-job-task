@@ -20,7 +20,7 @@ export default function DashboardLayout({ children }) {
           <li>
             <Link
               href="/dashboard/addProduct"
-              className="block hover:text-blue-400"
+              className="block hover:text-primary"
             >
               Add Product
             </Link>
@@ -29,7 +29,7 @@ export default function DashboardLayout({ children }) {
       </aside>
 
       {/* Content */}
-      <main className="flex-1 p-6 bg-gray-100">{children}</main>
+      <main className="flex-1 p-6">{children}</main>
     </div>
   );
 }

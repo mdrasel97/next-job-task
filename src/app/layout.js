@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Providers } from "./providers";
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,12 +28,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* ✅ পুরো app টাকে wrap করো */}
         <Providers>
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-          <ToastContainer />
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <LayoutWrapper authRequired={true}>
+              <Navbar />
+              <main className="min-h-screen">{children}</main>
+              <Footer />
+            </LayoutWrapper>
+            <ToastContainer />
+          </ThemeProvider>
         </Providers>
       </body>
     </html>

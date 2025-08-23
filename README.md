@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tohfa Shop
 
-## Getting Started
+Tohfa Shop is a modern web application where users can browse, view, and manage products. It is a full-stack project built with React, Next.js, Tailwind CSS, and MongoDB, featuring authentication, role-based access, and CRUD operations.
 
-First, run the development server:
+---
+
+## Features
+
+- User authentication with **NextAuth.js**
+  - Google login
+  - Email/password login (CredentialsProvider)
+- Product management
+  - Add products
+- Global **loader/spinner** while fetching data
+- Responsive **Navbar** and **Footer**
+- **Toast notifications** using React-Toastify
+- Dark/Light theme support using ThemeProvider
+- Real-time **price updates** for products
+
+---
+
+## Demo
+
+**Live Demo:** [(https://next-job-task-client.vercel.app/)]
+
+---
+
+## Technologies
+
+- **Frontend:** React, Next.js (App Router), Tailwind CSS, ChadCn ui
+- **Backend:** Next js server, MongoDB, NextAuth.js
+- **Authentication:** Google OAuth, Credentials (Email/Password)
+- **Notifications:** React-Toastify
+- **State Management:** React hooks
+
+---
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git https://github.com/mdrasel97/next-job-task
+cd Tohfa Shop
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Setup & Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Follow these steps to set up and run the project locally:
 
-## Learn More
+Clone repository
 
-To learn more about Next.js, take a look at the following resources:
+Install dependencies (npm install)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Configure .env file
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Run development server (npm run dev)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Developed by MD RASEL**

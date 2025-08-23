@@ -18,7 +18,7 @@ export default function SignUpPage() {
     console.log("SignUp Data:", data);
 
     try {
-      const res = await fetch("/api/users", {
+      const res = await fetch(`${process.env.NEXTAUTH_URL}/api/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

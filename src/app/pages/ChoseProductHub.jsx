@@ -17,7 +17,7 @@ export default function ChoseProductHub() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center p-8 rounded-xl bg-gradient-card shadow-card">
-            <div className="w-16 h-16 bg-red-300 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
               {/* <Shield className="h-8 w-8 text-white" /> */}
               <Shield className="h-8 w-8 text-black" />
             </div>
@@ -29,7 +29,7 @@ export default function ChoseProductHub() {
           </div>
 
           <div className="text-center p-8 rounded-xl bg-gradient-card shadow-card">
-            <div className="w-16 h-16 bg-red-300 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
               <Truck className="h-8 w-8 text-black" />
             </div>
             <h3 className="text-xl font-bold mb-4">Fast Shipping</h3>
@@ -40,7 +40,7 @@ export default function ChoseProductHub() {
           </div>
 
           <div className="text-center p-8 rounded-xl bg-gradient-card shadow-card">
-            <div className="w-16 h-16 bg-red-300 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
               <Headphones className="h-8 w-8 text-black" />
             </div>
             <h3 className="text-xl font-bold mb-4">24/7 Support</h3>
