@@ -16,9 +16,9 @@ export default function Navbar() {
         {/* Left: Logo + Name */}
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
-            L
+            P
           </div>
-          <span className="text-xl font-bold text-gray-800">MyWebsite</span>
+          <span className="text-xl font-bold text-gray-800">Tohfa Shop</span>
         </div>
 
         {/* Middle: Nav Links (Desktop) */}

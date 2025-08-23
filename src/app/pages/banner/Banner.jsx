@@ -1,6 +1,5 @@
 import { ArrowRight, Play } from "lucide-react";
 import Link from "next/link";
-// import heroImage from "@/assets/heroImg.jpg";
 
 const Banner = () => {
   return (
@@ -39,7 +38,7 @@ const Banner = () => {
             >
               <Link href="/products">
                 Shop Now
-                <ArrowRight className="ml-2 h-5 w-5" />
+                {/* <ArrowRight className="ml-2 h-5 w-5" /> */}
               </Link>
             </button>
 
@@ -48,7 +47,7 @@ const Banner = () => {
               size="lg"
               className="border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-3 text-lg"
             >
-              <Play className="mr-2 h-5 w-5" />
+              {/* <Play className="mr-2 h-5 w-5" /> */}
               Watch Demo
             </button>
           </div>

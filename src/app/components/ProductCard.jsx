@@ -53,8 +53,9 @@ export default function ProductCard({ product }) {
           {product.name}
         </h3>
 
-        <p className="text-muted-foreground mb-4 line-clamp-3">
-          {product.description}
+        <p className="text-muted-foreground mb-4">
+          {product.description.split(" ").slice(0, 10).join(" ")}
+          {product.description.split(" ").length > 10 ? "..." : ""}
         </p>
 
         <div className="flex items-center justify-between">
@@ -69,7 +70,7 @@ export default function ProductCard({ product }) {
 
       <CardFooter className="p-6 pt-0 flex gap-2">
         <Button asChild variant="outline" className="flex-1">
-          <Link href={`/products/${product.id}`}>View Details</Link>
+          <Link href={`/products/${product._id}`}>View Details</Link>
         </Button>
 
         <Button className="flex-1" disabled={!product.inStock}>

@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 import clientPromise from "@/lib/mongodb";
-// import bcrypt from "bcryptjs";
 
-export const authOptions = {
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -15,26 +15,14 @@ export const authOptions = {
         const client = await clientPromise;
         const db = client.db(process.env.MONGODB_DB);
 
-        // MongoDB থেকে user search
         const user = await db
           .collection("users")
           .findOne({ email: credentials.email });
+        if (!user) throw new Error("No user found with this email");
 
-        if (!user) {
-          throw new Error("No user found with this email");
-        }
-
-        // যদি password hashed থাকে
-        // const isValid = await bcrypt.compare(credentials.password, user.password);
-
-        // যদি plain text password use করো (যেমন তোমার data)
         const isValid = credentials.password === user.password;
+        if (!isValid) throw new Error("Invalid password");
 
-        if (!isValid) {
-          throw new Error("Invalid password");
-        }
-
-        // Return user object (session এ save হবে)
         return {
           id: user._id.toString(),
           name: user.name,
@@ -43,14 +31,15 @@ export const authOptions = {
         };
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
   ],
-  session: {
-    strategy: "jwt",
-  },
-  pages: {
-    signIn: "/auth/signIn", // custom login page
-  },
-};
+  session: { strategy: "jwt" },
+  secret: process.env.NEXTAUTH_SECRET,
+  pages: { signIn: "/auth/signIn" },
+});
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+// App Router এ HTTP methods export
+export { handler as GET, handler as POST, handler as PUT, handler as DELETE };

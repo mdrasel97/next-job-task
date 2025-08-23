@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 // app/dashboard/layout.js
 export const metadata = {
   title: "Dashboard | My App",
@@ -11,14 +13,17 @@ export default function DashboardLayout({ children }) {
         <h2 className="text-xl font-bold mb-6">Dashboard</h2>
         <ul className="space-y-2">
           <li>
-            <a href="/dashboard" className="block hover:text-blue-400">
+            <Link href={"/"} className="block hover:text-blue-400">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/dashboard/settings" className="block hover:text-blue-400">
-              Settings
-            </a>
+            <Link
+              href="/dashboard/addProduct"
+              className="block hover:text-blue-400"
+            >
+              Add Product
+            </Link>
           </li>
         </ul>
       </aside>
